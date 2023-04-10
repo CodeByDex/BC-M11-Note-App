@@ -4,12 +4,12 @@ function GetNotes(){
      return JSON.parse(fs.readFileSync("./db/db.json"));
 }
 
-function AddNote(title, text) {
+function AddNote(title, text, id) {
     let notes = GetNotes();
     notes.push({
         title: title,
         text: text,
-        id: (notes.length + 1).toString()
+        id: id
     });
 
     SaveNotes(notes);

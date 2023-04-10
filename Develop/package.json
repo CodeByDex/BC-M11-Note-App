@@ -9,9 +9,9 @@
   "author": "CodeBeDex",
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "uuid": "^9.0.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodeByDex/BC-M11-Note-App.git"

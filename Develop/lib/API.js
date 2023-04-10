@@ -1,5 +1,6 @@
 const api = require("express").Router();
 const IO = require("./IO");
+const {v4: uuidv4} = require("uuid");
 
 api.get("/", (req, res) => {
     console.log("API Get Request");
@@ -13,7 +14,7 @@ api.get("/notes", (req, res) => {
 api.post("/notes", (req, res) => {
     let {title, text} = req.body;
 
-    res.json(IO.AddNote(title, text));
+    res.json(IO.AddNote(title, text, uuidv4()));
 })
 
 api.delete("/notes/:id", (req, res) => {
