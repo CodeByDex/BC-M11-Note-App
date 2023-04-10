@@ -1,35 +1,36 @@
-let notes = [{
-    title: "title 1",
-    text: "Text 1",
-    id: "1"
-  },{
-    title: "title 2",
-    text: "text 2",
-    id: "2"
-  }];
-
+const fs = require("fs");
 
 function GetNotes(){
-     return notes
+     return JSON.parse(fs.readFileSync("./db/db.json"));
 }
 
 function AddNote(title, text) {
+    let notes = GetNotes();
     notes.push({
         title: title,
         text: text,
         id: (notes.length + 1).toString()
-    })
+    });
+
+    SaveNotes(notes);
 }
 
 function DeleteNote(id) {
+    let notes = GetNotes();
+
     let index = notes.findIndex(x => x.id === id);
 
     if (index != -1){
         notes.splice(index, 1);
+        SaveNotes(notes);
         return true;
     } else {
         return false;
     }
+}
+
+function SaveNotes(notes) {
+    fs.writeFileSync("./db/db.json", JSON.stringify(notes));
 }
 
 module.exports = {
